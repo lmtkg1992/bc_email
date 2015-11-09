@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Bc_Email>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bc_Email>
+    </modules>
+</config>

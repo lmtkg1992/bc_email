@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bc_Email>
+            <version>0.1.0</version>
+        </Bc_Email>
+    </modules>
+    <frontend>
+        <routers>
+            <Bc_Email>
+                <use>standard</use>
+                <args>
+                    <module>Bc_Email</module>
+                    <frontName>search</frontName>
+                </args>
+            </Bc_Email>
+        </routers>
+        <layout>
+            <updates>
+                <search module="Bc_Email">
+                    <file>bcsearch.xml</file>
+                </search>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <blocks>
+            <search>
+                <class>Bc_Email_Block</class>
+            </search>
+        </blocks>
+        <helpers>
+            <search>
+                <class>Bc_Email_Helper</class>
+            </search>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <search>
+                                            <title>Bluecom - Follow Email</title>
+                                        </search>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    
+
+</config>
