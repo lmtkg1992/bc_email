@@ -11,29 +11,29 @@
                 <use>standard</use>
                 <args>
                     <module>Bc_Email</module>
-                    <frontName>search</frontName>
+                    <frontName>email</frontName>
                 </args>
             </Bc_Email>
         </routers>
         <layout>
             <updates>
-                <search module="Bc_Email">
-                    <file>bcsearch.xml</file>
-                </search>
+                <email module="Bc_Email">
+                    <file>bcemail.xml</file>
+                </email>
             </updates>
         </layout>
     </frontend>
 
     <global>
         <blocks>
-            <search>
+            <email>
                 <class>Bc_Email_Block</class>
-            </search>
+            </email>
         </blocks>
         <helpers>
-            <search>
+            <email>
                 <class>Bc_Email_Helper</class>
-            </search>
+            </email>
         </helpers>
     </global>
 
@@ -49,9 +49,9 @@
                             <children>
                                 <config>
                                     <children>
-                                        <search>
+                                        <email>
                                             <title>Bluecom - Follow Email</title>
-                                        </search>
+                                        </email>
                                     </children>
                                 </config>
                             </children>
