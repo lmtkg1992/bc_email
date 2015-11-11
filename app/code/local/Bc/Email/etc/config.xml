@@ -7,13 +7,13 @@
     </modules>
     <frontend>
         <routers>
-            <Bc_Email>
+            <email>
                 <use>standard</use>
                 <args>
                     <module>Bc_Email</module>
                     <frontName>email</frontName>
                 </args>
-            </Bc_Email>
+            </email>
         </routers>
         <layout>
             <updates>
@@ -23,7 +23,17 @@
             </updates>
         </layout>
     </frontend>
-
+    <admin>
+        <routers>
+            <email_admin>
+                <use>admin</use>
+                <args>
+                    <module>Bc_Email</module>
+                    <frontName>email_admin</frontName>
+                </args>
+            </email_admin>
+        </routers>
+    </admin>
     <global>
         <blocks>
             <email>
@@ -35,9 +45,81 @@
                 <class>Bc_Email_Helper</class>
             </email>
         </helpers>
+        <models>
+            <email>
+                <class>Bc_Email_Model</class>
+                <resourceModel>email_resource</resourceModel>
+            </email>
+            <email_resource>
+                <class>Bc_Email_Model_Resource</class>
+                <entities>
+                    <rule>
+                        <table>bc_email_rule</table>
+                    </rule>
+                </entities>
+            </email_resource>
+        </models>
+        <resources>
+            <bc_email_setup>
+                <setup>
+                    <module>Bc_Email</module>
+                </setup>
+            </bc_email_setup>
+            <bc_email_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </bc_email_write>
+            <bc_email_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </bc_email_read>
+        </resources>
     </global>
 
     <adminhtml>
+        <layout>
+            <updates>
+                <download>
+                    <file>bcemail.xml</file>
+                </download>
+            </updates>
+        </layout>
+        <menu>
+            <email module="email">
+                <title>Follow Up Email</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <rules module="email">
+                        <title>Manage Rules</title>
+                        <sort_order>10</sort_order>
+                        <action>email_admin/adminhtml_rules</action>
+                    </rules>
+                    <entries module="email">
+                        <title>Mail log</title>
+                        <sort_order>20</sort_order>
+                        <action>email_admin/adminhtml_queue</action>
+                    </entries>
+                    <linktracking module="email">
+                        <title>Link Tracking</title>
+                        <sort_order>30</sort_order>
+                        <action>email_admin/adminhtml_linktracking</action>
+                    </linktracking>
+                    <coupons module="email">
+                        <title>Coupons</title>
+                        <sort_order>40</sort_order>
+                        <action>email_admin/adminhtml_coupons</action>
+                    </coupons>
+                    <settings module="email">
+                        <title>Settings</title>
+                        <sort_order>50</sort_order>
+                        <action>adminhtml/system_config/edit/section/email</action>
+                    </settings>
+                </children>
+            </email>
+        </menu>
+
         <acl>
             <resources>
                 <all>
@@ -45,6 +127,27 @@
                 </all>
                 <admin>
                     <children>
+                        <email>
+                            <title>Bluecom - Follow Email</title>
+                            <sort_order>10</sort_order>
+                            <children>
+                                <rules>
+                                    <title>Rules manager</title>
+                                </rules>
+                                <entries>
+                                    <title>Email queue</title>
+                                </entries>
+                                <linktracking>
+                                    <title>Link tracking</title>
+                                </linktracking>
+                                <coupons>
+                                    <title>Coupons Management</title>
+                                </coupons>
+                                <settings>
+                                    <title>Settings</title>
+                                </settings>
+                            </children>
+                        </email>
                         <system>
                             <children>
                                 <config>
@@ -61,6 +164,5 @@
             </resources>
         </acl>
     </adminhtml>
-    
 
 </config>
