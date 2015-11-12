@@ -106,7 +106,7 @@ class Bc_Email_Block_Adminhtml_Rule_Edit extends Mage_Adminhtml_Block_Widget_For
                     $('event_type').getValue() == '"
             . Bc_Email_Model_Source_Rule_Types::RULE_TYPE_CUSTOMER_CAME_BACK_BY_LINK . "')
                 {
-                    $('sale_amount_container').hide();
+                   /* $('sale_amount_container').hide();*/
                     $('product_type_ids').up(1).hide();
                     $('sku').up(1).hide();
                     $('email_tabs_categories').style.display='none';
@@ -122,7 +122,7 @@ class Bc_Email_Block_Adminhtml_Rule_Edit extends Mage_Adminhtml_Block_Widget_For
                 }
                 else {
                     $('sku').up(1).show();
-                    $('sale_amount_container').show();
+                    /*$('sale_amount_container').show();*/
                     $('product_type_ids').up(1).show();
                     $('email_tabs_categories').style.display='';
                 }

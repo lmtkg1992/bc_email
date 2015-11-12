@@ -12,6 +12,7 @@ class Bc_Email_Block_Adminhtml_Rule_Edit_Form extends Mage_Adminhtml_Block_Widge
                 'enctype' => 'multipart/form-data'
             )
         );
+
         $form->setUseContainer(true);
         $this->setForm($form);
         return parent::_prepareForm();

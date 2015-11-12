@@ -1,5 +1,5 @@
 <?php
-class Bc_Email_Block_Adminhtml_Rule_Edit_Tabs_General extends Mage_Adminhtml_Block_Widget_Form
+class Bc_Email_Block_Adminhtml_Rule_Edit_Tab_General extends Mage_Adminhtml_Block_Widget_Form
 {
     protected function _prepareForm()
     {
@@ -42,6 +42,7 @@ class Bc_Email_Block_Adminhtml_Rule_Edit_Tabs_General extends Mage_Adminhtml_Blo
             unset ($data['active_from']);
             throw $e;
         }
+
         $fieldset->addField(
             'active_from', 'date',
             array(
@@ -128,8 +129,9 @@ class Bc_Email_Block_Adminhtml_Rule_Edit_Tabs_General extends Mage_Adminhtml_Blo
             )
         );
 
+        /*for sale amount feature, we temporary disable it*/
         # sale_amount_value field
-        $fieldset->addField(
+        /*$fieldset->addField(
             'sale_amount_value', 'select',
             array(
                 'label'      => $this->__('Sale amount'),
@@ -139,9 +141,9 @@ class Bc_Email_Block_Adminhtml_Rule_Edit_Tabs_General extends Mage_Adminhtml_Blo
                 'conditions' => Mage::getModel('email/source_rule_saleamount')->toOptionArray(true),
             )
         );
-        $form->getElement('sale_amount_value')->setRenderer(
-            $this->getLayout()->createBlock('email/adminhtml_rule_edit_tab_details_saleamount')
-        );
+        */
+
+        /*Email chain,it's interesting feature,we will implement it*/
 
         # chain field
         $fieldset->addField(
@@ -160,5 +162,6 @@ class Bc_Email_Block_Adminhtml_Rule_Edit_Tabs_General extends Mage_Adminhtml_Blo
         $form->setValues($data);
         $this->setForm($form);
         return parent::_prepareForm();
+
     }
 }

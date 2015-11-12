@@ -2,10 +2,9 @@
 $installer = $this;
 $installer->startSetup();
 
-
 $installer->run("
     CREATE TABLE {$this->getTable('bc_email_rule')} (
-      `id` int(11) UNSIGNED NOT NULL,
+      `id` int(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
       `is_active` tinyint(1) NOT NULL DEFAULT '0',
       `event_type` varchar(128) NOT NULL,
       `title` varchar(255) NOT NULL,
@@ -45,5 +44,9 @@ $installer->run("
 ");
 
 $installer->endSetup();
+
+
+// template loader
+require 'install-bc-email-templates.php';
 
 
